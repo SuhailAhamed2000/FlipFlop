@@ -1,0 +1,32 @@
+// Code your testbench here
+// or browse Examples
+module tfftb();
+  reg t,clk,rst;
+  wire q;
+  tff p(t,clk,rst,q);
+  initial
+    begin
+      $dumpfile("tfftb.vcd");
+      $dumpvars(0,tfftb);
+    end
+  initial
+    begin
+      clk=1;
+      forever #5 clk=~clk;
+    end
+  initial
+    begin
+      #10 rst=1;
+      #10 rst=0;
+      #10 t=0;
+        #10 t=1;
+        #10 t=1;
+        #10 t=0;
+        #10 t=1;
+      #200 $finish;
+    end
+endmodule
+      
+      
+        
+
