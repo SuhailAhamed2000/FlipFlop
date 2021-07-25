@@ -1,0 +1,27 @@
+// Code your testbench here
+// or browse Examples
+module jkfftb();
+  reg j,k,clk,rst;
+  wire q;
+  jkff p(j,k,clk,rst,q);
+  initial
+    begin
+      $dumpfile("jkfftb.vcd");
+      $dumpvars(0,jkfftb);
+    end
+  initial
+    begin
+      clk=1;
+      forever #5 clk=~clk;
+    end
+  initial
+    begin
+      #10 rst=1;
+      #10 rst=0;
+      #10 j=1;k=0;
+       #10 j=1;k=1;
+       #10 j=0;k=0;
+       #10 j=0;k=1;
+      #200 $finish;
+    end
+endmodule
